@@ -24,14 +24,14 @@ class OctopiGUI(QMainWindow):
 		super().__init__(*args, **kwargs)
 
 		# load objects
-		self.microcontroller = microcontroller.Microcontroller_Simulation()
+		self.microcontroller = microcontroller.Microcontroller()
 		self.navigationController = core.NavigationController(self.microcontroller)
 
-		self.camera_1 = camera.Camera_Simulation(sn='FW0190110139') # tracking
-		self.camera_2 = camera.Camera_Simulation(sn='FU0190090030')	# fluorescence
+		self.camera_1 = camera.Camera(sn='FW0190110139') 	# tracking
+		self.camera_2 = camera.Camera(sn='FU0190090030')	# oil
 		
 		self.configurationManager_1 = core.ConfigurationManager(filename=str(Path.home()) + "/configurations_tracking.xml")
-		self.configurationManager_2 = core.ConfigurationManager(filename=str(Path.home()) + "/configurations_fluorescence.xml")
+		self.configurationManager_2 = core.ConfigurationManager(filename=str(Path.home()) + "/configurations_oil.xml")
 
 		self.streamHandler_1 = core.StreamHandler()
 		self.liveController_1 = core.LiveController(self.camera_1,self.microcontroller,self.configurationManager_1,control_illumination=False)
@@ -93,7 +93,7 @@ class OctopiGUI(QMainWindow):
 		# load window
 		self.imageDisplayWindow_1 = core.ImageDisplayWindow('Tracking')
 		self.imageDisplayWindow_1.show()
-		self.imageDisplayWindow_2 = core.ImageDisplayWindow('Fluorescence')
+		self.imageDisplayWindow_2 = core.ImageDisplayWindow('Oil')
 		self.imageDisplayWindow_2.show()
 		# self.imageArrayDisplayWindow = core.ImageArrayDisplayWindow('Multi-channel') 
 		# self.imageArrayDisplayWindow.show()
