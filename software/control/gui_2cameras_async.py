@@ -95,8 +95,8 @@ class OctopiGUI(QMainWindow):
 		self.imageDisplayWindow_1.show()
 		self.imageDisplayWindow_2 = core.ImageDisplayWindow('Fluorescence')
 		self.imageDisplayWindow_2.show()
-		self.imageArrayDisplayWindow = core.ImageArrayDisplayWindow('Multi-channel') 
-		self.imageArrayDisplayWindow.show()
+		# self.imageArrayDisplayWindow = core.ImageArrayDisplayWindow('Multi-channel') 
+		# self.imageArrayDisplayWindow.show()
 
 		# make connections
 		self.navigationController.xPos.connect(self.navigationWidget.label_Xpos.setNum)
@@ -121,7 +121,7 @@ class OctopiGUI(QMainWindow):
 		self.liveControlWidget_2.update_camera_settings()
 		
 		self.multipointController_2.image_to_display.connect(self.imageDisplayWindow_2.display_image)
-		self.multipointController_2.image_to_display_multi.connect(self.imageArrayDisplayWindow.display_image)
+		# self.multipointController_2.image_to_display_multi.connect(self.imageArrayDisplayWindow.display_image)
 		self.multipointController_2.signal_current_configuration.connect(self.liveControlWidget_2.set_microscope_mode)
 		
 
@@ -136,4 +136,4 @@ class OctopiGUI(QMainWindow):
 		self.camera_2.close()
 		self.imageSaver_2.close()
 		self.imageDisplayWindow_2.close()
-		self.imageArrayDisplayWindow.close()
+		# self.imageArrayDisplayWindow.close()
